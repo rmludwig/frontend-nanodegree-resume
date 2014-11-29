@@ -1,0 +1,130 @@
+
+
+### JS General Notes ###
+
+- console.log() is like a print statement for the console.
+- window.alert() creates a pop-up window
+- innerHTML writes new value to a given element. 
+  Example: document.getElementById("demo").innerHTML = 5 + 6;
+- document.write() writes the output to the document. 
+  DELETES all existing html in that div or tag.
+
+- [string].replace([old],[new]) replaces one string with 
+  another.
+- [string].slice() will take a portion of a string. Use the
+  -N operator to count from the end of the line N spaces.
+- s[1] selects the first character of a string.
+- s[1].toUpperCase() will make the first letter upper case.
+- var thisArray = [x, y, z] is an array called thisArray
+  with three items.
+- [array].length will return the length of an array.
+- var thisObject = {"greeting": "hello"} is an object called
+  thisObject with one attribute called greeting with a value of hello. This is refered to as the OBJECT LITERAL NOTATION.
+- thisObject.greeting will return the value of greeting.
+- thisObject["greeting"] will also return the same value. But
+  the bracket notation will allow for special characters or
+  opperations when the dot notation will not.
+- thisObject.myFunction is like the dot notation for an 
+  attribute name but in this instance the attribute can be a
+  function. The fucntion is itself an object within the object.
+
+
+
+### JQuery ###
+
+- The $("XX") is the selector for page elements.
+  $("#header") selects the head ID
+  $(".top") selects the class called "top"
+- .append([string]) will add more data to the end of an 
+  existing DOM string.
+- .prepend([string]) will add more data to the front of an 
+  existing DOM string.
+
+
+### JSON ###
+
+- Javascript Object Notation
+-
+
+
+### Special JS Code ###
+
+-----------------------------------------------------------
+- String replace for security
+
+var html = '<script src="http://hackyourwebsite.com/eviljavascript.js"></script>';
+
+var charEscape = function(_html) {
+    var newHTML = _html;
+    // How will you make sure that newHTML doesn't contain any < or > ?
+    // Your code goes here!
+    newHTML = newHTML.replace(/>/g, "&gt");
+    newHTML = newHTML.replace(/</g, "&lt");
+
+    // Don't delete this line!
+    return newHTML;
+};
+
+// Did your code work? The line below will tell you!
+console.log(charEscape(html));
+
+-----------------------------------------------------------
+- Object properties
+
+var weirdObject = {
+    "property": "Time for an astronomy lesson!",
+    "property1": "(Cameron's minor in college was astronomy)",
+    "property-2": "The 4 Galilean (largest) moons of Jupiter are:",
+    "property 3": "Io, Ganymede, Callisto, Europa",
+    "property$": "Saturn's moon Enceladus has liquid water ocean under its icy surface",
+    " property": "The Sun contains 99.87% of the mass of the entire solar system",
+    "property()": "There are 5 dwarf planets in our solar system:",
+    "property[]": "Pluto, Ceres, Eris, Haumea, Makemake",
+    "8property": "Mars has two tiny moons: Phobos and Deimos"
+};
+
+// Use console.log() to figure out if dot and/or bracket notation
+// will work to access the properties below. Mark true if you can use dot/bracket
+// notation to access the property, otherwise mark false.
+
+
+// I'll give you the first answer. The rest are set to false. Try out each property and
+// if you can use dot or bracket notation to access it, change the answer to true!
+
+// property
+var dotNotation0 = true;
+var bracketNotation0 = true;
+
+// property1
+var dotNotation1 = true;
+var bracketNotation1 = true;
+
+// property-2
+var dotNotation2 = false;
+var bracketNotation2 = true;
+
+// property 3
+var dotNotation3 = false;
+var bracketNotation3 = true;
+
+// property$
+var dotNotation4 = true;
+var bracketNotation4 = true;
+
+// *space*property
+var dotNotation5 = false;
+var bracketNotation5 = true;
+
+// property()
+var dotNotation6 = false;
+var bracketNotation6 = true;
+
+// property[]
+var dotNotation7 = false;
+var bracketNotation7 = true;
+
+// 8property
+var dotNotation8 = false;
+var bracketNotation8 = true;
+
+- 
