@@ -111,11 +111,103 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   */
 
 
+
+// ------- CUSTOM CODE STARTS HERE ------- //
+
+  /* Code I added without instructions
+    Did I miss something? My header was not like the one 
+    in the lessons. Not until I added this stuff.
+  */
+
+/*Add header data*/
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+
+  // my additional code for lesson 2
+  if(bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+    $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+    $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+    $("#skills").append(formattedSkill);
+    formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+    $("#skills").append(formattedSkill);
+  }
+
+/* while loop test */
+  var loopyTest = {};
+  loopyTest.job = "course dev";
+
+  var makeCourse = function() {
+    //make one
+    console.log("Made a course");
+  }
+
+  var courses = 0;
+  while(loopyTest.job === "course dev"){
+    makeCourse();
+    courses = ++courses;
+    if(courses === 10){
+      loopyTest.job = "learning specialist";
+    }
+  }
+  
+  console.log("Final value = " + loopyTest.job);
+
+/* for loop test */
+  for(var i = 0; i < 9; i++) {console.log(i)};
+
+  var countries = ["germany", "argentina", "brazil", "netherlands"];
+  for(country in countries) {console.log(countries[country])};
+
+
+/* for loop on work object */
+for(job in work.jobs) {
+  //start a section "work-entry"
+  $("#workExperience").append(HTMLworkStart);
+  
+  //add the details for this itteration of the loop to the last 
+  // "work-entry"
+  var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+  var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+  var formattedEmployerTitle = formattedEmployer + formattedTitle;
+  $(".work-entry:last").append(formattedEmployerTitle);
+  
+  //add the dates for this one to the last "work-entry"
+  var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+  $(".work-entry:last").append(formattedDates);
+
+  //add the location for this one to the last "work-entry"
+  var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+  $(".work-entry:last").append(formattedLocation);
+
+  //add the desc for this one to the last "work-entry"
+  var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+  $(".work-entry:last").append(formattedDescription);
+
+/*
+var HTMLworkDates = "<div class='date-text'>%data%</div>";
+var HTMLworkLocation = "<div class='location-text'>%data%</div>";
+var HTMLworkDescription = "<p><br>%data%</p>";
+*/
+
+  
+
+  console.log("added employer " + work.jobs[job].employer)
+}
+
+
+/* This is the original code. MUST BE ON BOTTOM */
   if(document.getElementsByClassName("flex-item").length === 0) {
-    document.getElementById("topContacts").style.display = "none";
+    //document.getElementById("topContacts").style.display = "none";
   }
   if(document.getElementsByTagName("h1").length === 0) {
-    document.getElementById("header").style.display = "none";
+    //document.getElementById("header").style.display = "none";
   }
   if(document.getElementsByClassName("work-entry").length === 0) {
     //document.getElementById("workExperience").style.display = "none";
@@ -140,5 +232,6 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   if(document.getElementById("map") == undefined) {
     document.getElementById("mapDiv").style.display = "none";
   }
+
   </script>
 </body>

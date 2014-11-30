@@ -120,7 +120,7 @@ twitter handle and location.
 */
 var bio = {
     "name": "Rich Ludwig",
-    "role": "Developer",
+    "role": "Web Developer and Automation Specialist",
     "welcomeMessage": "Welcome to my first interactive portfolio project.",
     "contacts": {
         "email": "developer@rmlsn.net",
