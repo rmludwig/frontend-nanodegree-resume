@@ -8,7 +8,6 @@
   Example: document.getElementById("demo").innerHTML = 5 + 6;
 - document.write() writes the output to the document. 
   DELETES all existing html in that div or tag.
-
 - [string].replace([old],[new]) replaces one string with 
   another.
 - [string].slice() will take a portion of a string. Use the
@@ -27,7 +26,17 @@
 - thisObject.myFunction is like the dot notation for an 
   attribute name but in this instance the attribute can be a
   function. The fucntion is itself an object within the object.
-
+- ALWAYS use === and !== for strict equality comparison (without
+  type conversion)
+- Anonymous funtions are frequently used in JS. They are functions
+  without a name. An example is below. Notice the function is in
+  the alert call and is not specifiec with a name assignment. Also
+  notice in this anonymous function that the argument is specified
+  after the function is constructed. This returnes an alert window
+  with 100 in it.
+  alert((function(x){
+    return x*x;
+  })(10));
 
 
 ### JQuery ###

@@ -106,7 +106,6 @@
 //};
 
 
-
 /* REAL DATA */
 // Note: All data above was for testing and lesson
 //       work. All data below is for continued work.
@@ -121,11 +120,12 @@ twitter handle and location.
 var bio = {
     "name": "Rich Ludwig",
     "role": "Web Developer and Automation Specialist",
-    "welcomeMessage": "Welcome to my first interactive portfolio project.",
+    "welcomeMessage": "Welcome to my interactive portfolio.",
     "contacts": {
         "email": "developer@rmlsn.net",
         "github": "rmludwig",
-        "location": "Saint Charles, MO"
+        "location": "Saint Charles, MO",
+        "domain": "rmlsn.net"
         },
     "skills": [
         "Web Development", 
@@ -133,7 +133,7 @@ var bio = {
         "Automation", 
         "Leadership"
         ],
-    "bioPic": "images/RichPassport.jpg"
+    "bioPic": "images/RichPassport.png"
 };
 
 
@@ -148,7 +148,7 @@ var work = {
     {
         "employer": "AT&T",
         "title": "Operations, Manager, Programmer",
-        "location": "Bridgeton, MO",
+        "location": "Bridgeton, MO 63044",
         "dates": 2015,
         "description": "Network operations tooling and automation development."
     },
@@ -198,7 +198,7 @@ var projects = {
                 "images/197x148.gif"
                 ]
         }
-    ]
+    ],
 }
 
 
@@ -251,8 +251,183 @@ var education = {
 };
 
 
+/* Code I added without instructions
+   Did I miss something? My header was not like the one 
+   in the lessons. Not until I added this stuff.
+*/
+
+//Setup the header data #header
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+//Add header data
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
 
 
+//Setup Contacts #topContacts
+var formattedDomn = HTMLcontactGeneric.replace("%data%", bio.contacts.domain).replace("%contact%", "Homepage");
+var formattedMail = HTMLemail.replace("%data%", bio.contacts.email);
+var formattedGitH = HTMLgithub.replace("%data%", bio.contacts.github);
+var formattedLocn = HTMLlocation.replace("%data%", bio.contacts.location);
+var formattedWelc = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
+//Add contact data
+$("#topContacts").append(formattedDomn);
+$("#topContacts").append(formattedMail);
+$("#topContacts").append(formattedGitH);
+$("#topContacts").append(formattedLocn);
+// excluding:
+//var HTMLblog = "<li class='flex-item'><span class='orange-text'>blog</span><span class='white-text'>%data%</span></li>";
+//var HTMLmobile = "<li class='flex-item'><span class='orange-text'>mobile</span><span class='white-text'>%data%</span></li>";
+//var HTMLtwitter = "<li class='flex-item'><span class='orange-text'>twitter</span><span class='white-text'>%data%</span></li>";
 
 
+//Setup and add hearer image
+var formattedImag = HTMLbioPic.replace("%data%", bio.bioPic);
+$("#header").append(formattedImag);
+
+
+//Setup ans add Welcome Message
+var formattedWlcm = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
+$("#header").append(formattedWlcm);
+
+
+/* This is the start of the code created as a part of 
+   lesson 2. This all followed the lesson plan with
+   minor customization.
+*/
+
+// my bio code for lesson 2
+//Setup and add skills section
+if(bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+
+  var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+  $("#skills").append(formattedSkill);
+  formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+  $("#skills").append(formattedSkill);
+  formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+  $("#skills").append(formattedSkill);
+  formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+  $("#skills").append(formattedSkill);
+}
+//var HTMLskillsStart = "<h3 id='skillsH3'>Skills at a Glance:</h3><ul id='skills' class='flex-box'></ul>";
+//var HTMLskills = "<li class='flex-item'><span class='white-text'>%data%</span></li>";
+
+
+//while loop test
+var loopyTest = {};
+loopyTest.job = "course dev";
+
+var makeCourse = function() {
+  //make one
+  console.log("Made a course");
+}
+
+var courses = 0;
+while(loopyTest.job === "course dev"){
+  makeCourse();
+  courses = ++courses;
+  if(courses === 10){
+    loopyTest.job = "learning specialist";
+  }
+}
+  
+console.log("Final value = " + loopyTest.job);
+
+
+//for loop test
+  for(var i = 0; i < 9; i++) {console.log(i)};
+
+  var countries = ["germany", "argentina", "brazil", "netherlands"];
+  for(country in countries) {console.log(countries[country])};
+
+
+//Setup adn add Work display function
+function displayWork(){
+  //for loop on work object
+  for(job in work.jobs) {
+    //start a section "work-entry"
+    $("#workExperience").append(HTMLworkStart);
+    
+    //add the details for this itteration of the loop to the last 
+    // "work-entry"
+    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+    var formattedEmployerTitle = formattedEmployer + formattedTitle;
+    $(".work-entry:last").append(formattedEmployerTitle);
+    
+    //add the dates for this one to the last "work-entry"
+    var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+    $(".work-entry:last").append(formattedDates);
+
+    //add the location for this one to the last "work-entry"
+    var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+    $(".work-entry:last").append(formattedLocation);
+
+    //add the desc for this one to the last "work-entry"
+    var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+    $(".work-entry:last").append(formattedDescription);
+
+    console.log("added employer " + work.jobs[job].employer)
+  }
+}
+displayWork();
+
+
+//Event logging
+$(document).click(function(loc) {
+  //my code goes here
+  logClicks(loc.pageX, loc.pageY);
+});
+
+
+//Internationalize button and function
+function inName(name) {
+    //The name is undefined. I had to set it with the bio data
+    name = bio.name;
+    console.log("name is = " + name);
+    var nameArray = name.trim().split(" ");
+    var firstName = nameArray[0][0].toUpperCase() + nameArray[0].slice(1);
+    var lastName = nameArray[1].toUpperCase();
+    var convertedName = firstName + " " + lastName;
+    console.log(convertedName);
+    return convertedName;
+}
+$("#main").append(internationalizeButton);
+
+
+//Setup and display project information
+//define display function inside projects object
+projects.display = function(){
+    for(project in projects.projects) {
+        //Start each section with project-entry
+        $("#projects").append(HTMLprojectStart);
+
+        //add the details for this itteration of the loop to the last 
+        // "project-entry"
+        var formattedProjTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+        var formattedProjDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+        var formattedProjDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+        $(".project-entry:last").append(formattedProjTitle);
+        $(".project-entry:last").append(formattedProjDates);
+        $(".project-entry:last").append(formattedProjDescription);
+
+        //add each image, itterate over array inside this array item
+        if (projects.projects[project].images.length > 0) {
+            for(image in projects.projects[project].images) {
+                var formattedProjImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+                $(".project-entry:last").append(formattedProjImage);
+                console.log("image " + projects.projects[project].images[image])
+            }
+        }
+        
+        console.log("added project " + projects.projects[project].title)
+    }
+}
+//call the function
+projects.display();
+
+
+//Setup and add the google map
+$("#mapDiv").append(googleMap);
 
